@@ -62,8 +62,21 @@ const App = () => {
                       marginBottom: "5px",
                     }}
                   >
-                    <b style={{ color: "crimson" }}>Name</b> - {user.name}{" "}
-                    <b style={{ color: "crimson" }}>Age </b>- {user.age}
+                    <b style={{ color: "crimson", fontSize: "15px" }}>Name</b> -{" "}
+                    <i style={{ color: "green", fontSize: "12px" }}>
+                      {user.name}
+                    </i>{" "}
+                    <b style={{ color: "crimson", fontSize: "15px" }}>Age </b>-{" "}
+                    <i style={{ color: "green", fontSize: "12px" }}>
+                      {user.age}
+                    </i>{" "}
+                    <b style={{ color: "crimson", fontSize: "15px" }}>
+                      College Name{" "}
+                    </b>
+                    -{" "}
+                    <i style={{ color: "green", fontSize: "12px" }}>
+                      {user.collegeName}
+                    </i>{" "}
                   </li>
                 );
               })}
