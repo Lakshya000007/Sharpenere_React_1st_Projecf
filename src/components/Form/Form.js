@@ -2,7 +2,7 @@ import { useState } from "react";
 import Card from "../../UI/Card/Card";
 import "./Form.css";
 
-const Form = ({ handleUsers, handleError }) => {
+const Form = ({ handleUsers, handleError, isError }) => {
   const [name, setName] = useState("");
   const [age, setAge] = useState();
 
@@ -34,6 +34,7 @@ const Form = ({ handleUsers, handleError }) => {
               <b>Name</b>
             </label>
             <input
+              className={`${isError && "nameError"}`}
               type="text"
               id="name"
               placeholder="Enter Name"
@@ -46,6 +47,7 @@ const Form = ({ handleUsers, handleError }) => {
               <b>Age (in years)</b>
             </label>
             <input
+              className={`${isError && "ageError"}`}
               type="number"
               id="age"
               placeholder="Enter Age"

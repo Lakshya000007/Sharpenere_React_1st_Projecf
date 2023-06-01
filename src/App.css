@@ -1,3 +1,18 @@
 .container {
   margin: auto;
 }
+
+.container.error {
+  filter: blur(4px);
+}
+
+.data.error {
+  filter: blur(4px);
+}
+
+.nameError {
+  pointer-events: none;
+}
+.ageError {
+  pointer-events: none;
+}

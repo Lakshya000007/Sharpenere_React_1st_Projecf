@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Form from "./components/Form/Form";
 import "./App.css";
 import Card from "./UI/Card/Card";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import Modals from "./components/Modals/Modals.js";
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -17,47 +16,19 @@ const App = () => {
     setIsError(err);
   };
 
-  const handleClose = () => {
-    setIsError(false);
-  };
-
-  if (isError) {
-    return (
-      <div
-        className="modal show"
-        style={{ display: "block", position: "initial" }}
-      >
-        <Card>
-          <Modal.Dialog>
-            <Modal.Header style={{ fontSize: "20px" }}>
-              Please Enter a Valid Name and Age (Non-empty values)
-            </Modal.Header>
-            <Modal.Footer>
-              <Button
-                onClick={handleClose}
-                style={{ fontSize: "20px", marginTop: "10px", color: "red" }}
-              >
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal.Dialog>
-        </Card>
-      </div>
-    );
-  }
-
   if (users.length === 0) {
     return (
       <>
-        <div className="container">
+        {isError && <Modals handleError={handleError} />}
+        <div className={`container ${isError && "error"}`}>
           <Form
             handleError={handleError}
             handleUsers={handleUsers}
             users={users}
+            isError={isError}
           />
         </div>
-
-        <div className="data">
+        <div className={`data ${isError && "error"}`}>
           <Card>
             <h3>Start Adding Users!</h3>
           </Card>
@@ -67,15 +38,18 @@ const App = () => {
   } else {
     return (
       <>
-        <div className="container">
+        {isError && <Modals handleError={handleError} />}
+
+        <div className={`container ${isError && "error"}`}>
           <Form
             handleError={handleError}
             handleUsers={handleUsers}
             users={users}
+            isError={isError}
           />
         </div>
 
-        <div className="data">
+        <div className={`data ${isError && "error"}`}>
           <Card>
             <ul>
               {users.map((user) => {
